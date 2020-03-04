@@ -1,0 +1,49 @@
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="page-header">
+				<h1>Library Users</h1>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<table class="table" id="table">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last name</th>
+						<th>Email</th>
+						<th>Role</th>
+						<!--  <th>Date Checked out</th>
+						<th>Return Date</th>-->
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user: ${users}">
+					<td th:text="${user.fname}"></td>
+						<td th:text="${user.lname}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.role.role}"></td>
+						<td><a class="btn btn-primary" th:href="@{users/edit/{id}(id=${user.userId})}" role="button">Edit</a></td>
+						<td><a class="btn btn-danger" th:href="@{users/delete/{id}(id=${user.userId})}" role="button">Delete</a></td>
+						<td><a class="btn btn-success" th:href="@{users/view/{id}(id=${user.userId})}" role="button">View</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

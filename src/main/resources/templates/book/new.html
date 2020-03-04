@@ -1,0 +1,74 @@
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	
+		<div class="jumbotron text-center">
+			<div class="page-header">
+				<h1 th:text="${title}">Add New Book</h1>
+			</div>
+			</div>
+	
+
+	<form action="" th:action="@{/books/createorupdate}"
+		th:object="${book}" method="post">
+		<div class="row">
+			<div class="col-md-6">
+				<!-- <label for="passwordl" class="col-form-label">password</label> -->
+				<input type="text" th:field="*{isbn}" class="form-control" id="isbn"
+					placeholder="ISBN" />
+			</div>
+			<div class="col-md-6">
+				<!-- <label for="fname" class="col-form-label">First Name</label> -->
+				<input type="text" th:field="*{title}" class="form-control"
+					id="title" placeholder="Title" />
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<!-- <label for="lname" class="col-form-label">Last Name</label> -->
+				<input type="text" th:field="*{price}" class="form-control"
+					id="price" placeholder="Price" />
+			</div>
+			<div class="col-md-6">
+				<!-- <label for="email" class="col-form-label">Email</label> -->
+				<input type="date" value="2011-08-19" th:field="*{publicationDate}"
+					class="form-control" id="publicationDate"
+					placeholder="publicationDate" />
+			</div>
+		</div>
+
+		<br>
+		<div class="row">
+			<div class="col">
+				<select class="custom-select" th:field="*{author}">
+					<option value="0">Select Author</option>
+					<option th:each="author : ${authors}" th:value="${author.authorId}"
+						th:text="${author.fname + ', ' + author.lname}"></option>
+				</select>
+			</div>
+			<div class="col">
+				<select class="custom-select" th:field="*{category}">
+					<option value="0">Select Category</option>
+					<option th:each="category : ${categorys}" th:value="${category.categoryId}"
+						th:text="${category.name}"></option>
+				</select>
+			</div>
+			
+		</div>
+
+		<br>
+		<div class="col-md-6">
+			<input type="submit" class="btn btn-primary" value=" Submit ">
+		</div>
+
+	</form>
+
+</div>

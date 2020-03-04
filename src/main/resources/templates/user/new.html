@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1 th:text= "${title}">Add New User</h1>
+            </div>
+            
+        </div>
+    </div>
+   
+    <form action="" th:action="@{/users/createorupdate}" th:object="${user}"
+         method="post">
+           <div class="row">                                                           
+    <div class="col-md-6">
+        <!-- <label for="fname" class="col-form-label">First Name</label> --> 
+          <input type="text" th:field="*{fname}" class="form-control"
+              id="fname" placeholder="First name" />
+      </div>
+      <div class="col-md-6">
+        <!-- <label for="lname" class="col-form-label">Last Name</label> --> 
+          <input type="text" th:field="*{lname}" class="form-control"
+              id="lname" placeholder="Last Name" />
+      </div>
+      </div>
+      <br>
+       <div class= "row">
+      <div class="col-md-6">
+        <!-- <label for="email" class="col-form-label">Email</label> --> 
+          <input type="text" th:field="*{email}" class="form-control"
+              id="email" placeholder="Email" />
+      </div>
+      <div class="col-md-6">
+        <!-- <label for="passwordl" class="col-form-label">password</label> --> 
+          <input type="password" th:field="*{password}" class="form-control"
+              id="password" placeholder="password" />
+      </div>
+      </div>
+      <br>
+        <div class= "row">
+          <div class= "col">
+           <select class= "custom-select" th:field="*{role}">
+              <option value= "0">Select Roles</option>
+               <option th:each="role : ${roles}" th:value="${role.roleId}" 
+                          th:text="${role.role}"></option>
+                </select>
+              </div>
+          <div class= "col">
+            <input type= "hidden" id= "id" th:field="*{userId}">
+         </div>
+        </div>
+        
+      <div class="col-md-6">
+      <input type="submit" class="btn btn-primary" value=" Submit ">
+        </div>
+ 
+    </form>
+  
+    </div>
